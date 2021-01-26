@@ -1,5 +1,5 @@
 {
-  "bg": "https://external-preview.redd.it/xF2AcTa-prCNViMXCNWNlf3pPTyYVLANSjL3iucS2vg.jpg?auto=webp&s=c05c0fab3735937cc19e49c09cc6a4db1f0e23ff",
+  "bg": "https://images3.alphacoders.com/185/thumb-1920-18567.jpg",
   "title": "Quiz do Mega Man",
   "description": "Ele é ferro e fogo, ele é puro aço... Ready?",
   "questions": [
@@ -31,12 +31,12 @@
   ],
   "theme": {
     "colors": {
-      "primary": "#346db0",
-      "secondary": "#759bde",
-      "mainBg": "#00437c",
+      "primary": "#386CB7",
+      "secondary": "#353A7D",
+      "mainBg": "#2A357D",
       "contrastText": "#FFFFFF",
-      "wrong": "#ba000d",
-      "success": "#02efee"
+      "wrong": "#DA433B",
+      "success": "#239DB0"
     },
     "borderRadius": "4px"
   }

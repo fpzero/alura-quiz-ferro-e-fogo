@@ -1,12 +1,10 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Widget = styled.div`
   margin-top: 24px;
   margin-bottom: 24px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => {
-    return theme.colors.mainBg;
-  }};
+  background-color: ${({ theme }) => theme.colors.mainBg};
   border-radius: 4px;
   overflow: hidden;
 
@@ -47,13 +45,17 @@ Widget.Content = styled.div`
     list-style: none;
     padding: 0;
   }
-  input[type="text"] {
+  input {
     width: 100%;
     padding: 10px;
     margin:10px 0;
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
     border-radius: 5px;
+    color: ${({ theme }) => theme.colors.contrastText};
+    ::placeholder {
+       color: lightblue;
+    }
   }
   button {
     display: inline-flex;
@@ -67,6 +69,11 @@ Widget.Content = styled.div`
     padding: 0.25em 0.75em;
     width: 100%;
     min-height: 40px;
+  }
+  button:disabled,
+  button[disabled]{
+    background-color: #cccccc;
+    color: #666666;
   }
 `;
 
