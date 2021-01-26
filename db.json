@@ -1,0 +1,43 @@
+{
+  "bg": "https://external-preview.redd.it/xF2AcTa-prCNViMXCNWNlf3pPTyYVLANSjL3iucS2vg.jpg?auto=webp&s=c05c0fab3735937cc19e49c09cc6a4db1f0e23ff",
+  "title": "Quiz do Mega Man",
+  "description": "Ele é ferro e fogo, ele é puro aço... Ready?",
+  "questions": [
+    {
+      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+      "title": "Como fazer um seletor por id via CSS?",
+      "description": "Essa é pra aquecer",
+      "answer": 2,
+      "alternatives": [
+        ".elemento",
+        "*elemento",
+        "#elemento",
+        "%elemento"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+      "title": "Como fazer um background gradiente com css?",
+      "description": "Faz tempo em haha",
+      "answer": 0,
+      "alternatives": [
+         "background: linear-gradient(#e66465, #9198e5);",
+         "background: gradient(#e66465, #9198e5);"
+      ]
+    }
+  ],
+  "external": [
+    ""
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#346db0",
+      "secondary": "#759bde",
+      "mainBg": "#00437c",
+      "contrastText": "#FFFFFF",
+      "wrong": "#ba000d",
+      "success": "#02efee"
+    },
+    "borderRadius": "4px"
+  }
+}
