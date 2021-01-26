@@ -8,6 +8,7 @@ import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
+import { useRouter } from 'next/router'
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -21,6 +22,7 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Quiz() {
+  const router = useRouter();
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
@@ -30,7 +32,7 @@ export default function Quiz() {
         <QuizLogo />
         <Widget>
           <Widget.Header>
-            <h1>{document.location.search.replace('?name=', '')}</h1>
+            <h1>{router.query.name}</h1>
           </Widget.Header>
           <Widget.Content>
             <p>Ready?</p>
