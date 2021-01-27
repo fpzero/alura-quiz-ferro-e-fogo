@@ -58,7 +58,7 @@ export default function Home() {
                 }}
                 placeholder="Player name"
               />
-              <button type="submit" disabled={name.length === 0}>
+              <button id="jogar" type="submit" disabled={name.length === 0}>
                 JOGAR
               </button>
             </form>
