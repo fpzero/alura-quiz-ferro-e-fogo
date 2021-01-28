@@ -45,35 +45,23 @@ Widget.Content = styled.div`
     list-style: none;
     padding: 0;
   }
-  input {
-    width: 100%;
-    padding: 10px;
-    margin:10px 0;
-    background: transparent;
-    border: 1px solid ${({ theme }) => theme.colors.primary};
-    border-radius: 5px;
-    color: ${({ theme }) => theme.colors.contrastText};
-    ::placeholder {
-       color: lightblue;
-    }
-  }
-  button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: ${({ theme }) => theme.colors.success};
-    color: ${({ theme }) => theme.colors.contrastText};
-    border-radius: 5px;
-    margin:10px 0;
-    border: 0;
-    padding: 0.25em 0.75em;
-    width: 100%;
-    min-height: 40px;
-  }
-  button:disabled,
-  button[disabled]{
-    background-color: #cccccc;
-    color: #666666;
+`;
+
+Widget.Topic = styled.a`
+  outline: 0;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.contrastText};
+  background-color: ${({ theme }) => `${theme.colors.primary}40`};
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  transition: .3s;
+  display: block;
+
+  &:hover,
+  &:focus {
+    opacity: .5;
   }
 `;
 
