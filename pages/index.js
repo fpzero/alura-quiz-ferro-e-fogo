@@ -38,10 +38,10 @@ export default function Home() {
         <QuizLogo />
         <Widget
           as={motion.section}
-          transition={{ delay: 0, duration: 0.5}}
+          transition={{ delay: 0, duration: 0.5 }}
           variants={{
             show: { opacity: 1, y: '0' },
-            hidden: { opacity: 0, y: '100%' },
+            hidden: { opacity: 0, y: '-100%' },
           }}
           initial="hidden"
           animate="show"
@@ -71,10 +71,10 @@ export default function Home() {
 
         <Widget
           as={motion.section}
-          transition={{ delay: 0.5, duration: 0.5}}
+          transition={{ delay: 0.2, duration: 0.5 }}
           variants={{
-            show: { opacity: 1 },
-            hidden: { opacity: 0 },
+            show: { opacity: 1, y: '0' },
+            hidden: { opacity: 0, y: '-100%' },
           }}
           initial="hidden"
           animate="show"
@@ -92,8 +92,8 @@ export default function Home() {
                   <li key={linkExterno}>
                     <Widget.Topic
                       as={Link}
-                      href={`/quiz/${projectName}___${githubUser}`}
-
+                      href={name.length > 0 ? `/quiz/${projectName}___${githubUser}` : '#'}
+                      {...(name.length === 0 ? { disabled: true } : {})}
                     >
                       {`${githubUser}/${projectName}`}
                     </Widget.Topic>
@@ -103,9 +103,20 @@ export default function Home() {
             </ul>
           </Widget.Content>
         </Widget>
-        <Footer />
+        <Footer
+          as={motion.section}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          variants={{
+            show: { opacity: 1, y: '0' },
+            hidden: { opacity: 0, y: '-100%' },
+          }}
+          initial="hidden"
+          animate="show"
+        />
       </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/fpzero/alura-quiz-ferro-e-fogo" />
+      <GitHubCorner
+        projectUrl="https://github.com/fpzero/alura-quiz-ferro-e-fogo"
+      />
     </QuizBackground>
   );
 }
