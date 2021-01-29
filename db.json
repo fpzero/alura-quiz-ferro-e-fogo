@@ -1,5 +1,6 @@
 {
   "bg": "https://images3.alphacoders.com/185/thumb-1920-18567.jpg",
+  "loading": "https://thumbs.gfycat.com/AnguishedNextClumber-max-1mb.gif",
   "title": "Quiz do Mega Man",
   "description": "Ele é ferro e fogo, ele é puro aço... Ready?",
   "questions": [
@@ -65,7 +66,7 @@
     }
   ],
   "external": [
-    ""
+    "https://quiz-with-nextjs.vercel.app/"
   ],
   "theme": {
     "colors": {

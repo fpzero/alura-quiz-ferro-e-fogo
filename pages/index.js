@@ -9,6 +9,7 @@ import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
+import ExternalQuizList from '../src/components/ExternalQuizList';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 
@@ -58,13 +59,7 @@ export default function Home() {
           </Widget.Content>
         </Widget>
 
-        <Widget>
-          <Widget.Content>
-            <h1>Quizes da Galera</h1>
-
-            <p>Dá uma olhada nos quizes incrível dessa galera. Outro desse só em 23XX!!!</p>
-          </Widget.Content>
-        </Widget>
+        <Widget />
         <Footer />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/fpzero/alura-quiz-ferro-e-fogo" />
