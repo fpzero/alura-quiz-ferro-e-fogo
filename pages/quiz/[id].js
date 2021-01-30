@@ -7,8 +7,8 @@ export default function QuizDaGaleraPage({ dbExterno }) {
   return (
     <ThemeProvider theme={dbExterno.theme}>
       <QuizScreen
-        externalQuestions={dbExterno.questions}
-        externalBg={dbExterno.bg}
+        quizQuestions={dbExterno.questions}
+        quizBg={dbExterno.bg}
       />
     </ThemeProvider>
     // <pre style={{ color: 'black' }}>

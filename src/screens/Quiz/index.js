@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import db from '../../../db.json';
+import { motion } from 'framer-motion';
+import Lottie from 'react-lottie';
 import Widget from '../../components/Widget';
 import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
@@ -8,20 +9,46 @@ import QuizContainer from '../../components/QuizContainer';
 import AlternativesForm from '../../components/AlternativesForm';
 import Button from '../../components/Button';
 import BackLinkArrow from '../../components/BackLinkArrow';
+import congrats from '../animations/congrats.json';
+import wrongAns from '../animations/wrong.json';
 
 function ResultWidget({ results }) {
   const router = useRouter();
+  const userName = router.query && router.query.name;
+  const respostasCertas = results.filter((x) => x).length;
+  let resultMessage = '';
+  let resultImg = '';
+  if (respostasCertas === results.length) {
+    resultMessage = `Parabéns ${userName}, você acertou as ${respostasCertas} perguntas e mostrou pro Dr. Willy quem é o verdadeiro Robot Master!!!`;
+    resultImg = 'https://thumbs.gfycat.com/CheerfulDistantChupacabra-max-1mb.gif';
+  } else if (respostasCertas > results.length / 2) {
+    resultMessage = `Muito bom ${userName}, você acertou ${respostasCertas} perguntas e já está preparado pra enfrentar o Dr. Willy!!!`;
+    resultImg = 'https://i.makeagif.com/media/3-06-2016/lLDS0n.gif';
+  } else if (respostasCertas === 0) {
+    resultMessage = `Oh não ${userName}, você errou todas as perguntas e permitiu que o Dr. Willy tivesse sucesso no seu plano de destruição. Game Over!!!`;
+    resultImg = 'https://i.pinimg.com/originals/0d/c6/2b/0dc62be3824b7d150b6d0a259558d1a7.gif';
+  } else {
+    resultMessage = `É isso aí ${userName}, você acertou ${respostasCertas} perguntas. A fase é difícil, mas treine um pouco mais que você consegue... Continue!!!`;
+    resultImg = 'https://www.fightersgeneration.com/nz9/char/megaman-and-rush-mm7.gif';
+  }
+
   return (
     <Widget>
       <Widget.Header>
         Resultado
       </Widget.Header>
+      <img
+        alt="Descrição"
+        style={{
+          width: '100%',
+          height: '150px',
+          objectFit: 'cover',
+        }}
+        src={resultImg}
+      />
       <Widget.Content>
         <p>
-          {`${router.query && router.query.name}, você acertou `}
-          {results.filter((x) => x).length}
-          {' '}
-          perguntas
+          {resultMessage}
         </p>
         <ul>
           {results.map((result, index) => (
@@ -54,7 +81,7 @@ function LoadingWidget() {
             height: '100%',
             objectFit: 'cover',
           }}
-          src={db.loading}
+          src="https://thumbs.gfycat.com/AnguishedNextClumber-max-1mb.gif"
         />
       </Widget.Content>
     </Widget>
@@ -73,6 +100,27 @@ function QuestionWidget({
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
   const hasAlternativeSelected = selectedAlternative !== undefined;
+  const [animationState, setAnimationState] = React.useState({
+    isStopped: false, isPaused: false,
+  });
+  const congratsLottie = {
+    loop: false,
+    autoplay: true,
+    animationData: congrats,
+    speed: 1.5,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+  const wrongLottie = {
+    loop: false,
+    autoplay: true,
+    animationData: wrongAns,
+    speed: 1.5,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   return (
     <Widget>
@@ -99,17 +147,19 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
-
         <AlternativesForm
           onSubmit={(infosDoEvent) => {
             infosDoEvent.preventDefault();
             setIsQuestionSubmited(true);
+            setAnimationState({
+              ...animationState,
+            });
             setTimeout(() => {
               addResult(isCorrect);
               onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
-            }, 1.5 * 1000);
+            }, 3 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
@@ -118,7 +168,12 @@ function QuestionWidget({
             const isSelected = selectedAlternative === alternativeIndex;
             return (
               <Widget.Topic
-                as="label"
+                as={motion.label}
+                whileHover={{ scale: 1.1 }}
+                variants={{
+                  checked: { scale: 1.05 },
+                }}
+                animate={isSelected ? 'checked' : ''}
                 key={alternativeId}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
@@ -140,8 +195,32 @@ function QuestionWidget({
           <Button id="ConfirmarResposta" type="submit" disables={!hasAlternativeSelected}>
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!!!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!!!</p>}
+          {isQuestionSubmited && isCorrect && (
+          <div style={{
+            'margin-left': '15px', position: 'absolute', bottom: '50px', 'text-align': 'center',
+          }}
+          >
+            <Lottie
+              width={250}
+              options={congratsLottie}
+              isStopped={animationState.isStopped}
+              isPaused={animationState.isPaused}
+            />
+          </div>
+          )}
+          {isQuestionSubmited && !isCorrect && (
+          <div style={{
+            'margin-left': '15px', position: 'absolute', bottom: '50px', 'text-align': 'center',
+          }}
+          >
+            <Lottie
+              width={250}
+              options={wrongLottie}
+              isStopped={animationState.isStopped}
+              isPaused={animationState.isPaused}
+            />
+          </div>
+          )}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
@@ -153,14 +232,14 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT',
 };
-export default function QuizPage({ externalQuestions, externalBg }) {
+export default function QuizPage({ quizQuestions, quizBg }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
-  const totalQuestions = externalQuestions.length;
+  const totalQuestions = quizQuestions.length;
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
-  const question = externalQuestions[questionIndex];
-  const bg = externalBg;
+  const question = quizQuestions[questionIndex];
+  const bg = quizBg;
 
   function addResult(result) {
     setResults([

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import Konami from 'react-konami-code';
 
 import db from '../db.json';
 import Widget from '../src/components/Widget';
@@ -13,6 +14,7 @@ import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import Link from '../src/components/Link';
+import KonamiImage from '../src/components/KonamiImage';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -117,6 +119,11 @@ export default function Home() {
       <GitHubCorner
         projectUrl="https://github.com/fpzero/alura-quiz-ferro-e-fogo"
       />
+      <Konami
+        code={[65, 66, 65, 67, 65, 66, 66]}
+      >
+        <KonamiImage />
+      </Konami>
     </QuizBackground>
   );
 }
