@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Konami from 'react-konami-code';
+import ls from 'local-storage';
 
 import db from '../db.json';
 import Widget from '../src/components/Widget';
@@ -31,6 +32,12 @@ export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      setName(ls.get('userName') || '');
+    }, 0);
+  }, []);
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
@@ -55,6 +62,7 @@ export default function Home() {
             <p>{db.description}</p>
             <form onSubmit={function (infosDoEvento) {
               infosDoEvento.preventDefault();
+              ls.set('userName', name);
               router.push(`/quiz?name=${name}`);
             }}
             >
@@ -94,7 +102,7 @@ export default function Home() {
                   <li key={linkExterno}>
                     <Widget.Topic
                       as={Link}
-                      href={name.length > 0 ? `/quiz/${projectName}___${githubUser}` : '#'}
+                      href={name.length > 0 ? `/quiz/${projectName}___${githubUser}` : '/#'}
                       {...(name.length === 0 ? { disabled: true } : {})}
                     >
                       {`${githubUser}/${projectName}`}

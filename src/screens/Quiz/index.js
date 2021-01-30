@@ -1,7 +1,7 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Lottie from 'react-lottie';
+import ls from 'local-storage';
 import Widget from '../../components/Widget';
 import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
@@ -13,11 +13,11 @@ import congrats from '../animations/congrats.json';
 import wrongAns from '../animations/wrong.json';
 
 function ResultWidget({ results }) {
-  const router = useRouter();
-  const userName = router.query && router.query.name;
   const respostasCertas = results.filter((x) => x).length;
+  const userName = ls.get('userName') || 'visitante';
   let resultMessage = '';
   let resultImg = '';
+
   if (respostasCertas === results.length) {
     resultMessage = `Parabéns ${userName}, você acertou as ${respostasCertas} perguntas e mostrou pro Dr. Willy quem é o verdadeiro Robot Master!!!`;
     resultImg = 'https://thumbs.gfycat.com/CheerfulDistantChupacabra-max-1mb.gif';
@@ -35,21 +35,22 @@ function ResultWidget({ results }) {
   return (
     <Widget>
       <Widget.Header>
-        Resultado
+        <BackLinkArrow href="/" />
+        <h3>Resultado</h3>
       </Widget.Header>
       <img
         alt="Descrição"
         style={{
           width: '100%',
-          height: '150px',
+          height: '250px',
           objectFit: 'cover',
         }}
         src={resultImg}
       />
       <Widget.Content>
-        <p>
+        <h3>
           {resultMessage}
-        </p>
+        </h3>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${index.toString()}__${result}`}>
@@ -58,7 +59,7 @@ function ResultWidget({ results }) {
               {' '}
               Resultado:
               {' '}
-              {result === true ? 'Acertou' : 'Errou'}
+              <img alt="result" height="15px" src={result === true ? 'https://www.adiumxtras.com/images/pictures/8bit_mega_man_1_20276_6496_thumb_9812.png' : 'http://supermariobroscrossover.com/media/skin-preview-dr-wily-mega-man.548/full'} />
             </li>
           ))}
         </ul>

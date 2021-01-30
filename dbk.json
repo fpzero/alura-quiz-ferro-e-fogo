@@ -1,0 +1,83 @@
+{
+    "bg": "https://cdn.miscellaneoushi.com/1600x900/20121019/zero%20mega%20man%20x%20megaman%20x%201600x900%20wallpaper_www.miscellaneoushi.com_38.jpg",
+    "title": "Quiz do Mega Man",
+    "description": "Ele é ferro e fogo, ele é puro aço... Ready?",
+    "questions": [
+      {
+        "image": "https://64.media.tumblr.com/tumblr_m9zrvsXCjr1r0ralmo1_500.gif",
+        "title": "Qual o nome do robô de suporte vermelho, apresentado no Mega Man 4?",
+        "description": "Torcendo por aquela vida extra",
+        "answer": 2,
+        "alternatives": [
+          "Rush",
+          "Auto",
+          "Eddie",
+          "Beat"
+        ]
+      },
+      {
+        "image": "https://media1.tenor.com/images/3d323afbc56b21727a47444a4c08c3be/tenor.gif",
+        "title": "Quem é o criador do Cut Man?",
+        "description": "Ele foi criado originalmente para cortar árvores",
+        "answer": 2,
+        "alternatives": [
+           "Dr. Willy",
+           "Dr. Ciel",
+           "Dr. Light",
+           "Dr. Cossack"
+        ]
+      },
+      {
+        "image": "https://c4.wallpaperflare.com/wallpaper/339/840/54/bass-treble-wallpaper-preview.jpg",
+        "title": "Qual o nome do robô de suporte no formato de lobo que é companheiro do Bass?",
+        "description": "Bem mais estiloso que o Rush",
+        "answer": 1,
+        "alternatives": [
+           "Purple",
+           "Treble",
+           "Tenor",
+           "Blues"
+        ]
+      },
+      {
+        "image": "https://i.kym-cdn.com/photos/images/original/000/709/114/6a5.gif",
+        "title": "Qual foi o primeiro master robo criado pelo Dr. Light?",
+        "description": "",
+        "answer": 3,
+        "alternatives": [
+           "Mega Man",
+           "Guts Man",
+           "Alpha Man",
+           "Proto Man"
+        ]
+      },
+      {
+        "image": "https://media1.tenor.com/images/23fd2322cbdf47217be16fdc0e6d9021/tenor.gif?itemid=3559495",
+        "title": "Em que ano foi lançado o primeiro Mega Man?",
+        "description": "",
+        "answer": 0,
+        "alternatives": [
+           "1987",
+           "1986",
+           "1985",
+           "1984"
+        ]
+      }
+    ],
+    "external": [
+      "https://darksouls-quiz.gui-leandro.vercel.app/",
+      "https://harry-potter-quiz.lucianoweslen11.vercel.app/",
+      "https://quiz-games.gabrielwolf-dev.vercel.app/"
+    ],
+    "theme": {
+      "colors": {
+        "primary": "#386CB7",
+        "secondary": "#70c3d8",
+        "mainBg": "#353A7D",
+        "contrastText": "#FFFFFF",
+        "wrong": "#DA433B",
+        "success": "#239DB0"
+      },
+      "borderRadius": "4px"
+    }
+  }
